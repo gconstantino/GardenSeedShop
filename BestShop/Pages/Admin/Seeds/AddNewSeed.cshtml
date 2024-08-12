@@ -1,0 +1,139 @@
+﻿@page
+@model BestShop.Pages.Admin.Seeds.AddNewModel
+@{
+}
+<h2 class="my-3">Add New Seed</h2>
+
+@if (Model.errorMessage.Length > 0)
+{
+    <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+        <strong>@Model.errorMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+else if (Model.successMessage.Length > 0)
+{
+    <div class='alert alert-success alert-dismissible fade show' role='alert'>
+        <strong>@Model.successMessage</strong>
+        <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+    </div>
+}
+
+<form method="POST" enctype="multipart/form-data">
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Name</label>
+        <div class="col-sm-6">
+            <input class="form-control" asp-for="Name" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Type</label>
+        <div class="col-sm-6">
+            <select class="form-select" asp-for="Type">
+                <option value='vegetable'>Vegetable</option>
+                <option value='herb'>Herb</option>
+                <option value='fruit'>Fruit</option>
+                <option value='flower'>Flower</option>
+                <option value='grass'>Grass</option>
+            </select>
+            <span asp-validation-for="Type" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Subtype</label>
+        <div class="col-sm-6">
+            <input class="form-control" asp-for="Subtype" />
+            <span asp-validation-for="Subtype" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Height (in)</label>
+        <div class="col-sm-6">
+            <input class="form-control" asp-for="Height" />
+            <span asp-validation-for="Height" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Germination Days</label>
+        <div class="col-sm-6">
+            <input class="form-control" asp-for="GerminationDays" />
+            <span asp-validation-for="GerminationDays" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Seed Depth (in)</label>
+        <div class="col-sm-6">
+        <select class="form-select" asp-for="SeedDepth">
+            <option value='1'>1</option>
+            <option value='1/2'>1/2</option>
+            <option value='1/4'>1/4</option>
+            <option value='1/8'>1/8</option>
+        </select>
+            <span asp-validation-for="SeedDepth" class="text-danger"></span>
+        </div>
+        
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Plant Spacing (in)</label>
+        <div class="col-sm-6">
+            <input class="form-control" asp-for="PlantSpacing" />
+            <span asp-validation-for="PlantSpacing" class="text-danger"></span>
+        </div>
+    </div>
+
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Sun Requirement</label>
+        <div class="col-sm-6">
+            <select class="form-select" asp-for="SunRequirement">
+                <option value='full'>full</option>
+                <option value='partial'>partial</option>
+            </select>
+            <span asp-validation-for="SunRequirement" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Season</label>
+        <div class="col-sm-6">
+            <select class="form-select" asp-for="Season">
+                <option value='warm'>warm</option>
+                <option value='cold'>cold</option>
+            </select>
+            <span asp-validation-for="Season" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Price ($)</label>
+        <div class="col-sm-6">
+            <input class="form-control" asp-for="Price" />
+            <span asp-validation-for="Price" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <label class="col-sm-3 col-form-label">Image</label>
+        <div class="col-sm-6">
+            <input class="form-control" asp-for="ImageFilename" />
+            <span asp-validation-for="ImageFilename" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="row mb-3">
+        <div class="offset-sm-3 col-sm-3 d-grid">
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </div>
+        <div class="col-sm-3 d-grid">
+            <a class="btn btn-outline-primary" href="/Admin/Seeds/Index" role="button">Cancel</a>
+        </div>
+    </div>
+
+</form>

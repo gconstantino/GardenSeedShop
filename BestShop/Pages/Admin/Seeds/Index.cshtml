@@ -1,0 +1,100 @@
+﻿@page
+@model BestShop.Pages.Admin.Seeds.IndexModel
+@{
+}
+
+<br />
+<h2> Seeds</h2>
+
+<div class="row mb-3">
+    <div class="col">
+<a class= "btn btn-primary" href="/Admin/Seeds/AddNewSeed">Add a new seed</a>
+    </div>
+    <div class="col">
+        <form class="d-flex">
+            <input class="form-control me-2" type="search" name="search"  value="@Model.search" placeholder="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+</div>
+
+<script>
+    function sortTable(column) {
+        window.location.href = '?Search=@Model.search&column=' + column; 
+    }
+</script>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th style="cursor: pointer;" onclick="sortTable('id')">ID</th>
+            <th style="cursor: pointer;" onclick="sortTable('name')">Name</th>
+            <th style="cursor: pointer;" onclick="sortTable('type')">Type</th>
+            <th style="cursor: pointer;" onclick="sortTable('subtype')">Subtype</th>
+            <th style="cursor: pointer;" onclick="sortTable('height')">Height (in)</th>
+            <th style="cursor: pointer;" onclick="sortTable('germination_days')">Germination Days</th>
+            <th style="cursor: pointer;" onclick="sortTable('seed_depth')">Seed Depth</th>
+            <th style="cursor: pointer;" onclick="sortTable('plant_spacing')">Plant Spacing</th>
+            <th style="cursor: pointer;" onclick="sortTable('sun_requirement')">Sun requirement</th>
+            <th style="cursor: pointer;" onclick="sortTable('season')">Season</th>
+            <th style="cursor: pointer;" onclick="sortTable('price')">Price</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model.Seeds)
+        {
+            <tr>
+                <td>@item.Id</td>
+                <td>@item.Name</td>
+                <td>@item.Type</td>
+                <td>@item.Subtype</td>
+                <td>@item.Height</td>
+                <td>@item.GerminationDays</td>
+                <td>@item.SeedDepth</td>
+                <td>@item.PlantSpacing</td>
+                <td>@item.SunRequirement</td>
+                <td>@item.Season</td>
+                <td>$@item.Price</td>
+                <td style="white-space:nowrap">
+                    <a class="btn btn-primary btn=sm" href ="/Admin/Seeds/Edit?id=@item.Id">Edit</a>
+                    <a class=" btn btn-danger btn-sm" href ="/Admin/Seeds/Delete?id=@item.Id">Delete</a>
+                </td>
+            </tr>
+            
+        }
+    </tbody>
+
+</table>
+
+@if (Model.totalPages < 5)
+{
+
+
+    <nav>
+        <ul class="pagination">
+            @for (int i = 1; i <= Model.totalPages; i++)
+            {
+                <li class="page-item"><a class="page-link" href="?page=@(i)&search=@(Model.search)">@i</a></li>
+            }
+        </ul>
+    </nav>
+}
+else
+{
+    <form>
+        <label>Page</label>
+        <select name="page" onchange="this.form.submit()">
+            @for(int i=1; i <= Model.totalPages; i++)
+            {
+                @if (i == Model.page) {
+                    <option value="@i" selected>@i</option>
+                }
+                else
+                {
+                    <option value="@i">@i</option>
+                }
+        }
+        </select>
+    </form>
+}

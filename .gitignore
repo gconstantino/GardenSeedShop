@@ -1,0 +1,8 @@
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
+
+/.vs
+/BestShop/bin/Debug/net8.0
+/BestShop/obj
+/BestShop/appsettings.Development.json
