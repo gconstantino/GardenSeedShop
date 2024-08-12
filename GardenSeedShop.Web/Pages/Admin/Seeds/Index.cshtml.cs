@@ -74,7 +74,7 @@ namespace BestShop.Pages.Admin.Seeds
                     }
 
                     string sql = $"SELECT * FROM seeds {sqlWhere}";
-                    sql += "ORDER BY " + column + " " + order; //" ORDER BY id ASC";
+                    sql += " ORDER BY " + column + " " + order; //" ORDER BY id ASC";
                     sql += " OFFSET @skip ROWS Fetch NEXT @pageSize ROWS ONLY";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
@@ -100,7 +100,9 @@ namespace BestShop.Pages.Admin.Seeds
                                 seed.SunRequirement = reader.GetString(8);
                                 seed.Season = reader.GetString(9);
                                 seed.Price = reader.GetDecimal(12);
-                                //seed.ImageFilename = reader.GetString(10);
+                                seed.ImageFilename = reader.IsDBNull(reader.GetOrdinal("image_filename"))
+                                                        ? null
+                                                        : reader.GetString(reader.GetOrdinal("image_filename"));
                                 seed.CreatedAt = reader.GetDateTime(11);
 
                                 Seeds.Add(seed);
