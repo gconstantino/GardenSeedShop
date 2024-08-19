@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - BestShop</title>
+    <title>@ViewData["Title"] - Garden Seed Shop</title>
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/BestShop.styles.css" asp-append-version="true" />
@@ -12,7 +12,7 @@
     <header>
         <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
             <div class="container">
-                <a class="navbar-brand" asp-area="" asp-page="/Index">BestShop</a>
+                <a class="navbar-brand" asp-area="" asp-page="/Index">Garden Seed Shop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
                         aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -30,17 +30,45 @@
                         </li>
                     </ul>
                     <ul class="navbar-nav">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                Admin
-                            </a>
-                            <ul class="dropdown-menu">
-                                <li><a class="dropdown-item" asp-page="/Admin/Messages/Index">Messages</a></li>
-                                <li><a class="dropdown-item" asp-page="/Admin/Seeds/Index">Seeds</a></li>
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" asp-page="/Index">Home</a></li>
-                            </ul>
-                        </li>
+                        @if (Context.Session.GetString("role") == null)
+                        {
+                            <li class="nav-item">
+                                <a class="btn btn-outline-primary me-2" asp-area="" asp-page="/Auth/Register">Register</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="btn btn-outline-primary me-2" asp-area="" asp-page="/Auth/Login">Login</a>
+                            </li>
+
+                        }
+                        else if (Context.Session.GetString("role").Equals("admin"))
+                        {
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Admin
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-page="/Admin/Messages/Index">Messages</a></li>
+                                    <li><a class="dropdown-item" asp-page="/Admin/Seeds/Index">Seeds</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-page="/Index">Home</a></li>
+                                </ul>
+                            </li>
+                        }
+                        else if (Context.Session.GetString("role").Equals("client"))
+                        {
+
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Client
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a class="dropdown-item" asp-page="/Index">Home</a></li>
+                                    <li><hr class="dropdown-divider"></li>
+                                    <li><a class="dropdown-item" asp-page="/Index">Home</a></li>
+                                </ul>
+                            </li>
+                        }
 
                     </ul>
                 </div>

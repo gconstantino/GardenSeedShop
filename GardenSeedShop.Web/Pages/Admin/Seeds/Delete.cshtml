@@ -1,0 +1,46 @@
+﻿@page
+@using System.Data.SqlClient
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment webHostEnvironment
+@using BestShop.MyHelpers
+@{
+    string id = Request.Query["id"];
+
+    try
+    {
+        string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BestShopDB;Trusted_Connection=true";
+        using (SqlConnection connection = new SqlConnection(connectionString))
+        {
+            connection.Open();
+
+            string sqlSelect = "SELECT image_filename FROM seeds WHERE id=@id";
+            using (SqlCommand command = new SqlCommand(sqlSelect, connection))
+            {
+                command.Parameters.AddWithValue("@id", id);
+                using (SqlDataReader reader = command.ExecuteReader())
+                {
+                    if (reader.Read())
+                    {
+                        string imageFileName = reader.GetString(0);
+                        string imageFolder = webHostEnvironment.WebRootPath + "/images/seeds/";
+                        string imageFullPath = System.IO.Path.Combine(imageFolder, imageFileName);
+                        System.IO.File.Delete(imageFullPath);
+                        Console.WriteLine("Delete Image " + imageFullPath);
+                    }
+                }
+            }
+
+            string sql = "DELETE FROM seeds WHERE id=@id";
+            using (SqlCommand command = new SqlCommand(sql, connection))
+            {
+                command.Parameters.AddWithValue("@id", id);
+                command.ExecuteNonQuery();
+            }
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine(ex.Message);
+    }
+
+    Response.Redirect("/Admin/Seeds/Index");
+}
