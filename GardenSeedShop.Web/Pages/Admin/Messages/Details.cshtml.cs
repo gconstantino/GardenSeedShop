@@ -1,9 +1,11 @@
+using GardenSeedShop.Web.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
 namespace BestShop.Pages.Admin.Messages
 {
+    [RequireAuth(RequiredRole = "admin")]
     public class DetailsModel : PageModel
     {
         public MessageInfo messageInfo = new MessageInfo();

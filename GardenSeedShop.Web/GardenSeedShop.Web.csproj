@@ -7,8 +7,24 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Pages\Auth\ForgotPassword.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="SendGrid" Version="9.29.3" />
     <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\Auth\ForgotPassword.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Pages\Auth\ForgotPassword.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Pages\Auth\ForgotPassword.cshtml" />
   </ItemGroup>
 
 </Project>

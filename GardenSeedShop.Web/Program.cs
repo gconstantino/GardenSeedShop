@@ -1,3 +1,8 @@
+
+using GardenSeedShop.Web;
+using GardenSeedShop.Web.Helpers;
+using Microsoft.AspNetCore.Identity.UI.Services;
+
 namespace BestShop
 {
     public class Program
@@ -18,7 +23,11 @@ namespace BestShop
                 options.Cookie.IsEssential = true;
             });
 
-            var app = builder.Build();
+
+			builder.Services.AddTransient<IFeatureChecker, FeatureChecker>();
+			builder.Services.AddTransient<IGardenShopEmailSender, GardenShopEmailSender>();
+
+			var app = builder.Build();
 
 
             // Configure the HTTP request pipeline.

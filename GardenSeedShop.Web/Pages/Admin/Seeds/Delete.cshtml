@@ -1,7 +1,8 @@
 ﻿@page
 @using System.Data.SqlClient
 @inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment webHostEnvironment
-@using BestShop.MyHelpers
+@using GardenSeedShop.Web.Helpers
+@attribute [RequireAuth(RequiredRole = "admin")]
 @{
     string id = Request.Query["id"];
 

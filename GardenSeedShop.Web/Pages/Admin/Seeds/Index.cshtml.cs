@@ -1,10 +1,12 @@
 using BestShop.Models;
+using GardenSeedShop.Web.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
 namespace BestShop.Pages.Admin.Seeds
 {
+    [RequireAuth(RequiredRole = "admin")]
     public class IndexModel : PageModel
     {
         public List<Seed> Seeds = new List<Seed>();

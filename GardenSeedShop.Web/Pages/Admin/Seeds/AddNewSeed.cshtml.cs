@@ -1,3 +1,4 @@
+using GardenSeedShop.Web.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.ComponentModel.DataAnnotations;
@@ -5,6 +6,7 @@ using System.Data.SqlClient;
 
 namespace BestShop.Pages.Admin.Seeds
 {
+    [RequireAuth(RequiredRole = "admin")]
     public class AddNewModel : PageModel
     {
         [BindProperty]

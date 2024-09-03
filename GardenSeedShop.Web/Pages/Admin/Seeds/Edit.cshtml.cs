@@ -1,4 +1,5 @@
 using BestShop.Models;
+using GardenSeedShop.Web.Helpers;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -7,6 +8,7 @@ using System.Data.SqlClient;
 
 namespace GardenSeedShop.Web.Pages.Admin.Seeds
 {
+    [RequireAuth(RequiredRole ="admin")]
     public class EditModel : PageModel
     {
         [BindProperty]

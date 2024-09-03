@@ -1,9 +1,11 @@
+using GardenSeedShop.Web.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using System.Data.SqlClient;
 
 namespace BestShop.Pages.Admin.Messages
 {
+    [RequireAuth(RequiredRole = "admin")]
     public class IndexModel : PageModel
     {
         public List<MessageInfo> listMessages = new List<MessageInfo>();
@@ -30,7 +32,7 @@ namespace BestShop.Pages.Admin.Messages
 
             try
             {
-                string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BestShopDB;Trusted_Connection=true";
+                string connectionString = "";
 
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
