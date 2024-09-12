@@ -55,10 +55,10 @@ namespace GardenSeedShop.Web.Pages.Auth
 
                                 string token = Guid.NewGuid().ToString();
 
-                                // save the token in the database
+                                
                                 SaveToken(Email, token);
 
-                                // send the token by email to the user
+                                
                                 string resetUrl = Url.PageLink("/Auth/ResetPassword") + "?token=" + token;
                                 string username = firstname + " " + lastname;
                                 string subject = "Password Reset";
@@ -98,7 +98,7 @@ namespace GardenSeedShop.Web.Pages.Auth
                 {
                     connection.Open();
 
-                    // delete any old token for this email address from the database
+                   
                     string sql = "DELETE FROM password_resets WHERE email=@email";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))
@@ -108,7 +108,7 @@ namespace GardenSeedShop.Web.Pages.Auth
                         command.ExecuteNonQuery();
                     }
 
-                    // add token to database
+                    
                     sql = "INSERT INTO password_resets (email, token) VALUES (@email, @token)";
 
                     using (SqlCommand command = new SqlCommand(sql, connection))

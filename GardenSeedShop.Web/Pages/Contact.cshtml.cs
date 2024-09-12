@@ -1,14 +1,13 @@
-using BestShop.Helpers;
+using GardenSeedShop.Web;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data.SqlClient;
 
 namespace BestShop.Pages
 {
-	public class ContactModel : PageModel
+    public class ContactModel : PageModel
 	{
 		private readonly IGardenShopEmailSender _emailSender;
 
