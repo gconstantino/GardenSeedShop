@@ -11,6 +11,7 @@ namespace BestShop.Pages.Admin.Seeds
     {
         public List<Seed> Seeds = new List<Seed>();
         public string search = "";
+
         public int page = 1; //the current html page
         public int totalPages = 0;
         private readonly int pageSize = 10;

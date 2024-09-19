@@ -51,18 +51,17 @@ namespace GardenSeedShop.Web.Pages
                 return;
             }
 
-            // successful data validation
             if (Phone == null) Phone = "";
 
 
-            // update the user profile or the password
+            
             string submitButton = Request.Form["action"];
 
-            string connectionString = "Data Source=.\\sqlexpress;Initial Catalog=bestshop;Integrated Security=True";
+            string connectionString = "Data Source=(localdb)\\MSSQLLocalDB;Initial Catalog=BestShopDB;Trusted_Connection=true";
 
             if (submitButton.Equals("profile"))
             {
-                // update the user profile in the database
+                
                 try
                 {
                     using (SqlConnection connection = new SqlConnection(connectionString))
@@ -92,7 +91,7 @@ namespace GardenSeedShop.Web.Pages
                     return;
                 }
 
-                // update the session data
+                
                 HttpContext.Session.SetString("firstname", Firstname);
                 HttpContext.Session.SetString("lastname", Lastname);
                 HttpContext.Session.SetString("email", Email);
@@ -103,7 +102,7 @@ namespace GardenSeedShop.Web.Pages
             }
             else if (submitButton.Equals("password"))
             {
-                // validate Password and ConfirmPassword
+                
                 if (Password == null || Password.Length < 5 || Password.Length > 50)
                 {
                     errorMessage = "Password length should be between 5 and 50 characters";
@@ -116,7 +115,7 @@ namespace GardenSeedShop.Web.Pages
                     return;
                 }
 
-                // update the password in the database
+                
                 try
                 {
                     using (SqlConnection connection = new SqlConnection(connectionString))
