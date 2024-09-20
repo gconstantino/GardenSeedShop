@@ -1,0 +1,105 @@
+﻿@page
+@model GardenSeedShop.Web.Pages.SeedDetailsModel
+@{
+}
+<h2 class="rounded text-center text-white p-2" style="background-color: #4B6F44;">Seed Details</h2>
+
+<div class="row">
+    <div class="col-md-3">
+        <div class="my-2 text-center sticky-top" style="top:10px;">
+            <img src="/images/seeds/@Model.seedInfo.ImageFilename" class="img-fluid rounded" alt="...">
+            <button type="button" class="btn btn-warning btn-sm my-2" onclick="addToCart(this, @Model.seedInfo.Id)">
+                Add to Cart <i class="bi bi-cart4"></i>
+            </button>
+        </div>
+    </div>
+    <div class="col-md-9">
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <h4>Name</h4>
+            </div>
+            <div class="col-md-8">
+                <h4>@Model.seedInfo.Name</h4>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Type</strong>
+            </div>
+            <div class="col-md-8">
+                @Model.seedInfo.Type
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Subtype</strong>
+            </div>
+            <div class="col-md-8">
+                @Model.seedInfo.Subtype
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Height</strong>
+            </div>
+            <div class="col-md-8">
+                @Model.seedInfo.Height
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Germination Days</strong>
+            </div>
+            <div class="col-md-8">
+                @Model.seedInfo.GerminationDays
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Seed Depth</strong>
+            </div>
+            <div class="col-md-8">
+                @Model.seedInfo.SeedDepth
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Plant Spacing</strong>
+            </div>
+            <div class="col-md-8">
+                @Model.seedInfo.PlantSpacing
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Sun Requirement</strong>
+            </div>
+            <div class="col-md-8">
+                @Model.seedInfo.SunRequirement
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Season</strong>
+            </div>
+            <div class="col-md-8">
+                @Model.seedInfo.Season
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-4">
+                <strong>Price</strong>
+            </div>
+            <div class="col-md-8">
+                @Model.seedInfo.Price
+            </div>
+        </div>
+        
+        </div>
+    </div>
+</div>

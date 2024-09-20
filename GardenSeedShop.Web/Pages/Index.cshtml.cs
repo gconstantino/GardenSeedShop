@@ -51,7 +51,7 @@ namespace BestShop.Pages
                         }
                     }
 
-                    sql = "SELECT TOP 4 books.*, (" +
+                    sql = "SELECT TOP 4 seeds.*, (" +
                        "SELECT SUM(order_items.quantity) FROM order_items WHERE seeds.id = order_items.seed_id" +
                        ") AS total_sales " +
                        "FROM seeds " +

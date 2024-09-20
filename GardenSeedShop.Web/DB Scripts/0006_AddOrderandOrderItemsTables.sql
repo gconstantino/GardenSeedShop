@@ -14,7 +14,7 @@
 CREATE TABLE order_items (
     id INT NOT NULL PRIMARY KEY IDENTITY,
 	order_id INT NOT NULL,
-	book_id INT NOT NULL,
+	seed_id INT NOT NULL,
     quantity INT NOT NULL,
 	unit_price DECIMAL (16, 2) NOT NULL,
 );

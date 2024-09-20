@@ -58,7 +58,7 @@
                             <h4>@item.Name</h4>
                             <p>Type: @item.Type, Price: @item.Price</p>
                             <h4>$@(item.Price)</h4>
-                            <a class="btn btn-primary btn-sm my-2" href="/SeedDetails?id=@(item.Id)" role="button">Details</a>
+                            <a class="btn btn-primary btn-sm my-2" href="/SeedDetails?id=@item.Id" role="button">Details</a>
                             <button type="button" class="btn btn-warning btn-sm my-2" onclick="addToCart(this, @item.Id)">
                                 Add to Cart <i class="bi bi-cart4"></i>
                             </button>

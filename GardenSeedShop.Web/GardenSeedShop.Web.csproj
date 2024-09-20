@@ -21,10 +21,15 @@
 
   <ItemGroup>
     <_ContentIncludedByDefault Remove="Pages\Auth\ForgotPassword.cshtml" />
+    <_ContentIncludedByDefault Remove="Pages\SeedDetails.cshtml" />
   </ItemGroup>
 
   <ItemGroup>
     <None Include="Pages\Auth\ForgotPassword.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <UpToDateCheckInput Remove="Pages\SeedDetails.cshtml" />
   </ItemGroup>
 
 </Project>
